@@ -4,11 +4,9 @@ on:
   pull_request:
     branches:
       - main
-      - developpement
   push:
     branches:
       - main
-      - developpement
   release:
     types:
       - created
@@ -78,5 +76,5 @@ jobs:
 
       - name: Build Docker image with release tag
         run: |
-          docker build -t ibiccicd:${{ github.event.release.tag_name }} .
-          docker push ibiccicd:${{ github.event.release.tag_name }}
+          docker build -t loutron34/ibiccicd:${{ github.event.release.tag_name }} .
+          docker push loutron34/ibiccicd:${{ github.event.release.tag_name }}
