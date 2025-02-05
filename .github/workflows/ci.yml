@@ -55,8 +55,8 @@ jobs:
 
       - name: Build Docker image with commit SHA
         run: |
-          docker build -t ibiccicd:${{ github.sha }} .
-          docker push ibiccicd:${{ github.sha }}
+          docker build -t loutron34/ibiccicd:${{ github.sha }} .
+          docker push loutron34/ibiccicd:${{ github.sha }}
 
   # Job de release (tagging et push Docker)
   release:
