@@ -36,7 +36,8 @@ jobs:
   # Job de build et de publication de l'image Docker lors du merge sur main
   build_and_publish:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    needs: test # Ce job dépend du job test réussi
+    if: github.ref == 'refs/heads/main' # Ce job s'exécute uniquement sur des push vers main
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
