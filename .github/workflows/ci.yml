@@ -85,7 +85,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image with release tag
+      - name: Build and push Frontend Docker image with release tag
         run: |
-          docker build -t loutron34/ibiccicd:${{ github.event.release.tag_name }} .
-          docker push loutron34/ibiccicd:${{ github.event.release.tag_name }}
+          docker build -t loutron34/ibiccicd-front:${{ github.event.release.tag_name }} -f front/Dockerfile front/
+          docker push loutron34/ibiccicd-front:${{ github.event.release.tag_name }}
+
+      - name: Build and push Backend Docker image with release tag
+        run: |
+          docker build -t loutron34/ibiccicd-back:${{ github.event.release.tag_name }} -f back/Dockerfile back/
+          docker push loutron34/ibiccicd-back:${{ github.event.release.tag_name }}
