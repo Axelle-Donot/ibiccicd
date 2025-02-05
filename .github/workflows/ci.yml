@@ -27,11 +27,21 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install dependencies
+      - name: Install dependencies Front
         run: npm install
+        working-directory: front
 
-      - name: Run tests
+      - name: Run tests Front
         run: npm test
+        working-directory: front
+
+        - name: Install dependencies Back
+        run: npm install
+        working-directory: back
+
+      - name: Run tests Back
+        run: npm test
+        working-directory: back
 
   # Job de build et de publication de l'image Docker lors du merge sur main
   build_and_publish:
