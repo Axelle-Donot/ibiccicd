@@ -55,8 +55,8 @@ jobs:
 
       - name: Build Docker image with commit SHA
         run: |
-          docker build -t my-image:${{ github.sha }} .
-          docker push my-image:${{ github.sha }}
+          docker build -t ibiccicd:${{ github.sha }} .
+          docker push ibiccicd:${{ github.sha }}
 
   # Job de release (tagging et push Docker)
   release:
@@ -78,5 +78,5 @@ jobs:
 
       - name: Build Docker image with release tag
         run: |
-          docker build -t my-image:${{ github.event.release.tag_name }} .
-          docker push my-image:${{ github.event.release.tag_name }}
+          docker build -t ibiccicd:${{ github.event.release.tag_name }} .
+          docker push ibiccicd:${{ github.event.release.tag_name }}
