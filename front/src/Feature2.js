@@ -17,7 +17,7 @@ const Feature2 = () => {
 
     try {
       const response = await fetch(
-        `https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMake/${make}?format=json`
+        `http://localhost:5000/feature2/${make}`
       );
 
       if (!response.ok) throw new Error("Erreur lors de la récupération des données");
