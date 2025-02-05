@@ -58,7 +58,8 @@ jobs:
   # Job de release (tagging et push Docker)
   release:
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    needs: build_and_publish # Ce job dépend du job précédent
+    if: github.event_name == 'release' # Ce job s'exécute uniquement lors d'une création de release
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
